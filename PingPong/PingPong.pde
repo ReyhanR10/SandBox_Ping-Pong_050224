@@ -19,7 +19,7 @@ void setup () {
   //exit () ; //Mimics Garbage location of all VAriables 
   //An object is ... SEE the class
   ball  = new Ball ( width/2, height/2, 50 ) ; //Myball = instance of Ball
-  ball.speedX = 7 ; // speed in x axis 
+  ball.speedX = 3 ; // speed in x axis 
   ball.speedY = random ( -3,3 ) ; //Speed of the ball in Y Axis 
   //
   paddleLeft = new Paddle ( 15, height/2, 30,210 ) ;
@@ -120,18 +120,27 @@ void draw () {
 
 void keyPressed () {
   if ( keyCode == UP ) {
-    paddleRight.speedY=-3 ;
+    paddleRight.speedY= -6;
   }
   if ( keyCode == DOWN ) {
-    paddleRight.speedY=3 ;
+    paddleRight.speedY= 6 ;
   }
-  if ( key == 'w' ) {
-    paddleLeft.speedY=-3 ;
+  if ( key  == 'w' ) {
+    paddleLeft.speedY= -6;
   }
-  if ( key == 's' ) {
-    paddleLeft.speedY=3 ;
+  if ( key  == 's' ) {
+    paddleLeft.speedY= 6 ;
   }
-  
+  //SSSSSht this is a Really Power Up Easter EGG
+  if ( key == '1' ) {
+    ball.speedX = 15 ;
+  }
+  if ( key == '2' ) {
+    paddleLeft.speedY = -12 ;
+  }
+  if ( key == '3' ) {
+    paddleLeft.speedY = 12 ;
+  }
   
   
   
