@@ -181,13 +181,14 @@ class Ball
   float speedX, speedY ;
   
   //Construction Methode
-  Ball ( float tempX, float tempY, float tempDiameter ) { //Ball running Program 
+    Ball ( float tempX, float tempY, float tempDiameter ) { //Ball running Program 
     ballX = tempX ;
     ballY = tempY ;
     diameter = tempDiameter ;
     speedX = 0 ;
     speedY = 0 ;
     colour = ( 225 ) ;
+    //ball.colour = color ( random ( 0, 255 ), random ( 255 ), random ( 255 ) ); RGB BALL SKIN
     
 } //End 
   
