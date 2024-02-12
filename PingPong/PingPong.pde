@@ -7,10 +7,13 @@ Paddle paddleRight ;
 int scoreBoardLeft = 0 ;
 int scoreBoardRight = 0 ;
 
+float BackgroundX, BackgroundY, BackgroundWidth, BackgroundHeight ;
+PImage picBackground ;
+
 color colour=#34E0D3 ;
 
 void setup () {
-  fullScreen () ; //How Big My Tab Will Be 
+  fullScreen () ; //How Big My Tab Will Be size ( ) ;
   /*ScreenSizeChecker  () for landscape, portrait, square views
   Updated automatically for screen rotation android 
   */
@@ -18,18 +21,24 @@ void setup () {
   println ( "Exiciting .. . Very or not Exicitng" ) ;
   //exit () ; //Mimics Garbage location of all VAriables 
   //An object is ... SEE the class
+  
+  //Population 
+  
   ball  = new Ball ( width/2, height/2, 50 ) ; //Myball = instance of Ball
   ball.speedX = 3 ; // speed in x axis 
-  ball.speedY = random ( -3,3 ) ; //Speed of the ball in Y Axis 
+  ball.speedY = random ( -4, 4 ) ; //Speed of the ball in Y Axis
   //
-  paddleLeft = new Paddle ( 15, height/2, 30,210 ) ;
-  paddleRight = new Paddle  ( width-15, height/2, 30, 210 ) ;
+  paddleLeft = new Paddle ( 15, height/2, 30,205 ) ;
+  paddleRight = new Paddle  ( width-15, height/2, 30, 205 ) ;
   //myBall.colour = color ( random (0, 255 ), random ( 255 ), B ) ;
  // fill ( myBall.colour ) ;
  // fill ( 0 ) ;
-  
+ String picBackG  = "../Images/ImagesUsed/NightSky.jpg" ;
+ picBackground = loadImage ( picBackG ) ;
 // 
 } //End Setup
+
+ //MR Mark Mercers Key CODED
 
 /*class Ball {
 float PingX ;
@@ -53,6 +62,7 @@ color black = #271F1F ;
 
 void draw () {
   background ( 0 ) ; //CLEAR window
+  rect ( BackgroundX, BackgroundY, BackgroundWidth, BackgroundHeight ) ;
   ball.display () ;
   ball.move () ;
   ball.move () ;
@@ -103,8 +113,11 @@ void draw () {
     ball.speedX = -ball.speedX;
     ball.speedY = map(ball.ballY - paddleRight.ballY, -paddleRight.ballHeight/2, paddleRight.ballHeight/2, -10, 10);
   }
-  
-
+  textSize ( 60 ) ;
+  textAlign ( CENTER, TOP ) ;
+  // Score Board WIN / WIN ;
+  text ( scoreBoardRight, width/2+30, 30 ) ; // Right and left ScoreBoard
+  text ( scoreBoardLeft, width/2-30, 30 ) ; //
   
   
   //Empty Loop
@@ -120,20 +133,20 @@ void draw () {
 
 void keyPressed () {
   if ( keyCode == UP ) {
-    paddleRight.speedY= -6;
+    paddleRight.speedY= -8;
   }
   if ( keyCode == DOWN ) {
-    paddleRight.speedY= 6 ;
+    paddleRight.speedY= 8 ;
   }
   if ( key  == 'w' ) {
-    paddleLeft.speedY= -6;
+    paddleLeft.speedY= -8 ;
   }
   if ( key  == 's' ) {
-    paddleLeft.speedY= 6 ;
+    paddleLeft.speedY= 8 ;
   }
   //SSSSSht this is a Really Power Up Easter EGG
   if ( key == '1' ) {
-    ball.speedX = 15 ;
+    ball.speedX = 10  ;
   }
   if ( key == '2' ) {
     paddleLeft.speedY = -12 ;
@@ -141,6 +154,15 @@ void keyPressed () {
   if ( key == '3' ) {
     paddleLeft.speedY = 12 ;
   }
+  /*if ( scoreBoardLeft > 8 ) {
+    //ball.speedX = 16 ;
+  //}
+  //if ( scoreBoardLeft > 8 ) {
+   // ball.speedY = 16 ;
+  } */
+  
+    
+  
   
   
   
@@ -179,7 +201,7 @@ class Ball
 {
   float ballX, ballY, diameter ;
   float speedX, speedY ;
-  
+  color colour ;
   //Construction Methode
     Ball ( float tempX, float tempY, float tempDiameter ) { //Ball running Program 
     ballX = tempX ;
@@ -187,8 +209,7 @@ class Ball
     diameter = tempDiameter ;
     speedX = 0 ;
     speedY = 0 ;
-    colour = ( 225 ) ;
-    //ball.colour = color ( random ( 0, 255 ), random ( 255 ), random ( 255 ) ); RGB BALL SKIN
+    colour = color ( random ( 0, 255 ), random ( 255 ), random ( 255 ) ); //RGB BALL SKIN
     
 } //End 
   
