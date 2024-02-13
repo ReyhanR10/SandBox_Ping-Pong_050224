@@ -33,9 +33,12 @@ void setup () {
   //myBall.colour = color ( random (0, 255 ), random ( 255 ), B ) ;
  // fill ( myBall.colour ) ;
  // fill ( 0 ) ;
- String picBackG  = "../Images/ImagesUsed/NightSky.jpg" ;
- picBackground = loadImage ( picBackG ) ;
-// 
+ 
+ String Path = "../Images/ImagesUsed/" ;
+ String SkyNight = "NightSky.jpg" ;
+ //
+ String SkyImage = sketchPath ( Path + SkyNight ) ;
+ picBackground  = loadImage ( SkyImage ) ;
 } //End Setup
 
  //MR Mark Mercers Key CODED
@@ -173,7 +176,7 @@ void keyPressed () {
 
 
 void mousePressed () {
-  
+  //if ( mouseX > ( 
   
   
   
