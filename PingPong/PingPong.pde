@@ -1,5 +1,5 @@
 //Global Variables
-Ball ball ;
+Ball ball, yourBall ;
 
 Paddle paddleLeft ;
 Paddle paddleRight ;
@@ -25,6 +25,7 @@ void setup () {
   //Population 
   
   ball  = new Ball ( width/2, height/2, 50 ) ; //Myball = instance of Ball
+  yourBall = new Ball ( width/3, height /3, 50 ) ;
   ball.speedX = 3 ; // speed in x axis 
   ball.speedY = random ( -4, 4 ) ; //Speed of the ball in Y Axis
   //
@@ -157,12 +158,13 @@ void keyPressed () {
   if ( key == '3' ) {
     paddleLeft.speedY = 12 ;
   }
-  /*if ( scoreBoardLeft > 8 ) {
-    //ball.speedX = 16 ;
-  //}
+  if ( scoreBoardLeft > 8 ) {
+    ball.speedX = 16 ;
+  }
   //if ( scoreBoardLeft > 8 ) {
    // ball.speedY = 16 ;
-  } */
+ // }
+    
   
     
   
