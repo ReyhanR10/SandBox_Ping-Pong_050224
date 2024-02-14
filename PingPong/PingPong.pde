@@ -10,6 +10,7 @@ int scoreBoardRight = 0 ;
 float BackgroundX, BackgroundY, BackgroundWidth, BackgroundHeight ;
 PImage picBackground ;
 
+
 color colour=#34E0D3 ;
 
 void setup () {
@@ -26,6 +27,9 @@ void setup () {
   
   ball  = new Ball ( width/2, height/2, 50 ) ; //Myball = instance of Ball
   yourBall = new Ball ( width/3, height /3, 50 ) ;
+  for (int i=0 ; i < fireworks.length ; i++ ) {
+  fireworks [i] = new Fireworks  () ; 
+  }
   ball.speedX = 3 ; // speed in x axis 
   ball.speedY = random ( -4, 4 ) ; //Speed of the ball in Y Axis
   //
@@ -65,8 +69,11 @@ color black = #271F1F ;
 */
 
 void draw () {
-  background ( 0 ) ; //CLEAR window
+  background ( pongTableColour ) ; //CLEAR window
   rect ( BackgroundX, BackgroundY, BackgroundWidth, BackgroundHeight ) ;
+  for ( int i=0 ; i < fireworks.length ; i++ ) {
+    fireworks [i].draw () ;
+    
   ball.display () ;
   ball.move () ;
   ball.move () ;
@@ -136,6 +143,7 @@ void draw () {
 
 
 void keyPressed () {
+  
   if ( keyCode == UP ) {
     paddleRight.speedY= -8;
   }
@@ -178,6 +186,11 @@ void keyPressed () {
 
 
 void mousePressed () {
+  
+   for (int i=0 ; i < fireworks.length ; i++ ) {
+  fireworks [i] = new Ball  ( 0.5 ) ; 
+  }
+  
   //if ( mouseX > ( 
   
   
@@ -198,15 +211,20 @@ void keyReleased () {
   if ( key == 's' ) {
     paddleLeft.speedY=0 ;
   }
-  
 }
 //End keyReleased 
 
 class Ball 
 {
+  
+  
   float ballX, ballY, diameter ;
-  float speedX, speedY ;
+  float speedX, speedY, speedChangeX, speedChangeY ;
   color colour ;
+  float gravity = null ; //Firework
+  //Static int count of = 25 ; //static number for mount of Ball Instances in a firework
+  //
+  
   //Construction Methode
     Ball ( float tempX, float tempY, float tempDiameter ) { //Ball running Program 
     ballX = tempX ;
@@ -216,6 +234,7 @@ class Ball
     speedY = 0 ;
     colour = color ( random ( 0, 255 ), random ( 255 ), random ( 255 ) ); //RGB BALL SKIN
     
+  
 } //End 
   
   void move () {
@@ -260,11 +279,12 @@ class Paddle {
   speedX = 0 ;
   speedY = 0 ;
   colour = ( 225 ) ;
+  //
   } //End 
   
   void move () {
    ballX += speedX ;
-   ballY += speedY ;
+   ballY += speedY  ;
   } //End 
  
   void display () {
