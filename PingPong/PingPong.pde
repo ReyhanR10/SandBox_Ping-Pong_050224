@@ -1,5 +1,5 @@
 //Global Variables
-Ball ball, yourBall ;
+Ball ball ;
 
 Paddle paddleLeft ;
 Paddle paddleRight ;
@@ -26,10 +26,10 @@ void setup () {
   //Population 
   
   ball  = new Ball ( width/2, height/2, 50 ) ; //Myball = instance of Ball
-  yourBall = new Ball ( width/3, height /3, 50 ) ;
-  for (int i=0 ; i < fireworks.length ; i++ ) {
-  fireworks [i] = new Fireworks  () ; 
-  }
+  ball = new Ball ( width/3, height /3, 50 ) ;
+  //for (int i=0 ; i < fireworks.length ; i++ ) {
+  //fireworks [i] = new Fireworks  () ; 
+  //}
   ball.speedX = 3 ; // speed in x axis 
   ball.speedY = random ( -4, 4 ) ; //Speed of the ball in Y Axis
   //
@@ -69,10 +69,8 @@ color black = #271F1F ;
 */
 
 void draw () {
-  background ( pongTableColour ) ; //CLEAR window
+  background ( 0 ) ; //CLEAR window
   rect ( BackgroundX, BackgroundY, BackgroundWidth, BackgroundHeight ) ;
-  for ( int i=0 ; i < fireworks.length ; i++ ) {
-    fireworks [i].draw () ;
     
   ball.display () ;
   ball.move () ;
@@ -173,26 +171,10 @@ void keyPressed () {
    // ball.speedY = 16 ;
  // }
     
-  
-    
-  
-  
-  
-  
 // 
 } //End keyPressed 
 
-
-
-
 void mousePressed () {
-  
-   for (int i=0 ; i < fireworks.length ; i++ ) {
-  fireworks [i] = new Ball  ( 0.5 ) ; 
-  }
-  
-  //if ( mouseX > ( 
-  
   
   
   
@@ -221,7 +203,7 @@ class Ball
   float ballX, ballY, diameter ;
   float speedX, speedY, speedChangeX, speedChangeY ;
   color colour ;
-  float gravity = null ; //Firework
+  //float gravity = null ; //Firework
   //Static int count of = 25 ; //static number for mount of Ball Instances in a firework
   //
   
@@ -306,6 +288,8 @@ class Paddle {
     return ballY+ballHeight/2 ;
   }
 
-} // End 
+ } // End 
+
+
 
 //End DRIVER
