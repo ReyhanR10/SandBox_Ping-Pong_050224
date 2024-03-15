@@ -1,6 +1,6 @@
 //Global Variables
 Ball ball ;
-
+Ball [] fireworks = new Ball [25] ;
 Paddle paddleLeft ;
 Paddle paddleRight ;
 
@@ -27,15 +27,18 @@ void setup () {
   
   ball  = new Ball ( width/2, height/2, 50 ) ; //Myball = instance of Ball
   ball = new Ball ( width/3, height /3, 50 ) ;
+ for (int i=0; i < fireworks.length; i++) {
+    fireworks[i] = new Ball(width*-1, height*-1, 0.5);
+  }
   //for (int i=0 ; i < fireworks.length ; i++ ) {
   //fireworks [i] = new Fireworks  () ; 
   //}
-  ball.speedX = 3 ; // speed in x axis 
+  ball.speedX = 5 ; // speed in x axis 
   ball.speedY = random ( -4, 4 ) ; //Speed of the ball in Y Axis
   //
   paddleLeft = new Paddle ( 15, height/2, 30,205 ) ;
   paddleRight = new Paddle  ( width-15, height/2, 30, 205 ) ;
-  //myBall.colour = color ( random (0, 255 ), random ( 255 ), B ) ;
+  //Ball.colour = color ( random (0, 255 ), random ( 255 ), B ) ;
  // fill ( myBall.colour ) ;
  // fill ( 0 ) ;
  
@@ -117,6 +120,8 @@ void draw () {
     ball.speedX = -ball.speedX;
     ball.speedY = map(ball.ballY - paddleLeft.ballY, -paddleLeft.ballHeight/2, paddleLeft.ballHeight/2, -10, 10);
   }
+  for (int i=0; i < fireworks.length; i++) {
+    fireworks[i].draw(); //
   
   if ( ball.right() > paddleRight.left() && ball.ballY > paddleRight.up() && ball.ballY < paddleRight.down()) {
     ball.speedX = -ball.speedX;
@@ -196,99 +201,7 @@ void keyReleased () {
 }
 //End keyReleased 
 
-class Ball 
-{
-  
-  
-  float ballX, ballY, diameter ;
-  float speedX, speedY, speedChangeX, speedChangeY ;
-  color colour ;
-  //float gravity = null ; //Firework
-  //Static int count of = 25 ; //static number for mount of Ball Instances in a firework
-  //
-  
-  //Construction Methode
-    Ball ( float tempX, float tempY, float tempDiameter ) { //Ball running Program 
-    ballX = tempX ;
-    ballY = tempY ;
-    diameter = tempDiameter ;
-    speedX = 0 ;
-    speedY = 0 ;
-    colour = color ( random ( 0, 255 ), random ( 255 ), random ( 255 ) ); //RGB BALL SKIN
-    
-  
-} //End 
-  
-  void move () {
-    //Add speed for ur Ball
-    ballX = ballX + speedX ; 
-    ballY = ballY + speedY ;
-    
-} //End 
 
-void display () {
-  fill ( colour ) ; //Color drawing 
-  ellipse ( ballX, ballY, diameter, diameter ) ;
-  
-} //End 
-
-//Functions to help
-float left () {
-  return ballX-diameter/2 ;
-}
-float right () {
-  return ballX+diameter/2;
-}
-float up () {
-  return ballY-diameter/2 ;
-}
-float down () {
-  return ballY+diameter/2 ;
-}
-
-} //End 
-
-class Paddle {
-  float ballX, ballY, ballWidth, ballHeight ;
-  float speedX, speedY ;
-  color warna ;
-  //
-  Paddle ( float tempX, float tempY, float tempWidth, float tempHeight ) {
-  ballX = tempX ;
-  ballY = tempY ;
-  ballWidth = tempWidth ;
-  ballHeight = tempHeight  ;
-  speedX = 0 ;
-  speedY = 0 ;
-  colour = ( 225 ) ;
-  //
-  } //End 
-  
-  void move () {
-   ballX += speedX ;
-   ballY += speedY  ;
-  } //End 
- 
-  void display () {
-    fill ( colour ) ;
-    rect ( ballX-ballWidth, ballY-ballHeight/2, ballWidth, ballHeight ) ;
-  } //End 
-  
-  //Help me Plssssss
-  float left () {
-    return ballX-ballWidth/2 ;
-  }
-  float right () {
-    return  ballX+ballWidth/2 ;
-  }
-  float up () {
-    return ballY-ballHeight/2 ;
-  }
-  float down () {
-    return ballY+ballHeight/2 ;
-  }
-
- } // End 
 
 
 
